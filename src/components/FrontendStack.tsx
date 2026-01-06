@@ -25,12 +25,12 @@ const FrontendStack = () => {
           {frontendTech.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className={`${tech.color} ${tech.textColor} p-8 rounded-2xl font-bold text-3xl sm:text-4xl shadow-lg cursor-pointer flex flex-col items-center justify-center`}
+              className={`${tech.color} ${tech.textColor} p-8 rounded-2xl font-bold text-3xl sm:text-4xl shadow-lg cursor-pointer flex flex-col items-center justify-center hover:shadow-2xl transition-shadow`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, shadow: '0 20px 40px rgba(0,0,0,0.3)' }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
               <tech.icon className="text-5xl sm:text-6xl mb-4" />
