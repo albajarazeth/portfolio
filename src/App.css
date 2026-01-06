@@ -1,0 +1,30 @@
+/* Custom styles for fine-grain control */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E91E63;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F43F5E;
+}
+
+/* Selection color */
+::selection {
+  background-color: #E91E63;
+  color: white;
+}
