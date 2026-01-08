@@ -11,20 +11,20 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0B0B0F;
+  background: #FFD1DC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E91E63;
+  background: #FF1493;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F43F5E;
+  background: #FF1493;
 }
 
 /* Selection color */
 ::selection {
-  background-color: #E91E63;
+  background-color: #FF1493;
   color: white;
 }

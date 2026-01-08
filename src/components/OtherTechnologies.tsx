@@ -25,7 +25,7 @@ const iconMap: { [key: string]: any } = {
   'Asana': TbBrandAsana,
   'Confluence': SiConfluence,
   'Figma': SiFigma,
-  'Canva': null, // No icon available
+  'Canva': null,
 };
 
 const techCategories = [
@@ -49,10 +49,10 @@ const techCategories = [
 
 const OtherTechnologies = () => {
   return (
-    <section id="other-tech" className="py-24 px-6 sm:px-8 lg:px-12 bg-dark-bg-alt">
+    <section id="other-tech" className="py-24 px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 mb-16 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#4A148C] mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -64,30 +64,32 @@ const OtherTechnologies = () => {
           {techCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
+              className="clay-card rounded-[40px] p-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              whileHover={{ scale: 1.02, y: -4 }}
             >
-              <h3 className="text-xl font-semibold text-pink-accent mb-4">{category.title}</h3>
+              <h3 className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#FF69B4] to-[#BA68C8] mb-4">
+                {category.title}
+              </h3>
               <div className="flex flex-wrap gap-3">
                 {category.items.map((item, itemIndex) => {
                   const Icon = iconMap[item];
                   return (
                     <motion.span
                       key={item}
-                      className="px-4 py-2 bg-gray-800 text-gray-200 rounded-full text-sm font-medium border border-gray-700 flex items-center gap-2"
+                      className="clay-card px-4 py-2 text-[#333] rounded-full text-sm font-medium flex items-center gap-2"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: categoryIndex * 0.1 + itemIndex * 0.05 }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        borderColor: '#E91E63',
-                        backgroundColor: '#1a1a1a'
-                      }}
+                      whileHover={{ scale: 1.1 }}
                     >
-                      {Icon && <Icon className="text-base" />}
+                      {Icon && (
+                        <Icon className="text-base" />
+                      )}
                       <span>{item}</span>
                     </motion.span>
                   );
@@ -102,4 +104,3 @@ const OtherTechnologies = () => {
 };
 
 export default OtherTechnologies;
-

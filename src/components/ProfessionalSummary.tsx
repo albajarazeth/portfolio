@@ -11,9 +11,11 @@ const ProfessionalSummary = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed text-balance">
-            Software Engineer with 3+ years of full-stack experience building scalable web applications using React, TypeScript, and backend systems. Currently pursuing a part-time master's and expanding into AI and machine learning to apply intelligent solutions to real-world problems. Recognized for quickly mastering new technologies, collaborating across teams, and delivering clean, maintainable solutions.
-          </p>
+          <div className="clay-card rounded-[40px] p-8 md:p-12">
+            <p className="text-lg sm:text-xl md:text-2xl text-[#333] leading-relaxed text-balance">
+              Software Engineer with 3+ years of full-stack experience building scalable web applications using React, TypeScript, and backend systems. Currently pursuing a part-time master's and expanding into AI and machine learning to apply intelligent solutions to real-world problems. Recognized for quickly mastering new technologies, collaborating across teams, and delivering clean, maintainable solutions.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -21,4 +23,3 @@ const ProfessionalSummary = () => {
 };
 
 export default ProfessionalSummary;
-

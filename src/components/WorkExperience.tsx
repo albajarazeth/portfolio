@@ -1,5 +1,11 @@
 import { motion } from 'framer-motion';
 
+const HeartIcon = () => (
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+  </svg>
+);
+
 const experiences = [
   {
     title: 'Software Engineer Frontend - Lead',
@@ -56,7 +62,7 @@ const WorkExperience = () => {
     <section id="experience" className="py-24 px-6 sm:px-8 lg:px-12">
       <div className="max-w-5xl mx-auto">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 mb-16 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#4A148C] mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -64,32 +70,36 @@ const WorkExperience = () => {
         >
           Work Experience
         </motion.h2>
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.company}-${index}`}
-              className="border-l-2 border-pink-accent pl-8 pb-12 relative"
+              className="clay-card rounded-[40px] p-8 relative"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.02, y: -4 }}
             >
-              <div className="absolute -left-2 top-0 w-4 h-4 bg-pink-accent rounded-full"></div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-2">{exp.title}</h3>
-              <p className="text-xl text-pink-accent mb-4">{exp.company}</p>
-              <p className="text-sm text-gray-400 mb-6">{exp.stack}</p>
+              <div className="mb-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">{exp.title}</h3>
+                <p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#FF69B4] to-[#BA68C8] mb-4 font-semibold">{exp.company}</p>
+                <p className="text-sm text-[#4A148C]">{exp.stack}</p>
+              </div>
               <ul className="space-y-3">
                 {exp.bullets.map((bullet, bulletIndex) => (
                   <motion.li
                     key={bulletIndex}
-                    className="text-gray-300 flex items-start"
+                    className="text-[#333] flex items-start gap-3"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.2 + bulletIndex * 0.1 }}
                   >
-                    <span className="text-pink-accent mr-3 mt-1">•</span>
-                    <span>{bullet}</span>
+                    <span className="text-[#FF69B4] mt-1 flex-shrink-0">
+                      <HeartIcon />
+                    </span>
+                    <span className="leading-relaxed">{bullet}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -102,4 +112,3 @@ const WorkExperience = () => {
 };
 
 export default WorkExperience;
-

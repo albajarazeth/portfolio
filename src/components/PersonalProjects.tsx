@@ -29,7 +29,7 @@ const PersonalProjects = () => {
     <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 mb-16 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#4A148C] mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -44,14 +44,14 @@ const PersonalProjects = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 cursor-pointer block"
+              className="group relative overflow-hidden rounded-[40px] clay-card cursor-pointer block"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, borderColor: '#E91E63' }}
+              whileHover={{ scale: 1.05, y: -8 }}
             >
-              <div className="aspect-video overflow-hidden relative">
+              <div className="aspect-video overflow-hidden relative rounded-t-[40px]">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -59,8 +59,10 @@ const PersonalProjects = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-100 mb-2 group-hover:text-pink-accent transition-colors">{project.title}</h3>
-                <p className="text-gray-400">{project.description}</p>
+                <h3 className="text-xl font-bold text-[#333] mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#FF69B4] group-hover:to-[#BA68C8] transition-all">
+                  {project.title}
+                </h3>
+                <p className="text-[#4A148C]">{project.description}</p>
               </div>
             </motion.a>
           ))}
@@ -71,4 +73,3 @@ const PersonalProjects = () => {
 };
 
 export default PersonalProjects;
-

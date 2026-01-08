@@ -2,18 +2,18 @@ import { motion } from 'framer-motion';
 import { SiJavascript, SiTypescript, SiReact, SiAngular } from 'react-icons/si';
 
 const frontendTech = [
-  { name: 'JavaScript', years: '3+ years', color: 'bg-yellow-400', textColor: 'text-black', icon: SiJavascript },
-  { name: 'TypeScript', years: '3+ years', color: 'bg-blue-600', textColor: 'text-white', icon: SiTypescript },
-  { name: 'React', years: '3+ years', color: 'bg-cyan-500', textColor: 'text-white', icon: SiReact },
-  { name: 'Angular', years: '1 year', color: 'bg-red-600', textColor: 'text-white', icon: SiAngular },
+  { name: 'JavaScript', years: '3+ years', color: '#F7DF1E', icon: SiJavascript },
+  { name: 'TypeScript', years: '3+ years', color: '#3178C6', icon: SiTypescript },
+  { name: 'React', years: '3+ years', color: '#61DAFB', icon: SiReact },
+  { name: 'Angular', years: '1 year', color: '#DD0031', icon: SiAngular },
 ];
 
 const FrontendStack = () => {
   return (
-    <section id="frontend" className="py-24 px-6 sm:px-8 lg:px-12 bg-dark-bg-alt">
+    <section id="frontend" className="py-24 px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-100 mb-16 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#4A148C] mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -25,7 +25,7 @@ const FrontendStack = () => {
           {frontendTech.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className={`${tech.color} ${tech.textColor} p-8 rounded-2xl font-bold text-3xl sm:text-4xl shadow-lg cursor-pointer flex flex-col items-center justify-center hover:shadow-2xl transition-shadow`}
+              className="clay-card rounded-[40px] p-8 cursor-pointer flex flex-col items-center justify-center relative transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
@@ -33,9 +33,19 @@ const FrontendStack = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <tech.icon className="text-5xl sm:text-6xl mb-4" />
-              <div className="mb-4">{tech.name}</div>
-              <div className="text-lg sm:text-xl opacity-90">{tech.years}</div>
+              <div className="relative z-10 mb-4">
+                <tech.icon 
+                  className="text-5xl sm:text-6xl transition-transform duration-300"
+                  style={{ color: tech.color }}
+                />
+              </div>
+              
+              <div className="text-2xl sm:text-3xl font-bold text-[#333] mb-2 relative z-10">
+                {tech.name}
+              </div>
+              <div className="text-base sm:text-lg text-[#4A148C] relative z-10">
+                {tech.years}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -45,4 +55,3 @@ const FrontendStack = () => {
 };
 
 export default FrontendStack;
-
