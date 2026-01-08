@@ -1,11 +1,5 @@
 import { motion } from 'framer-motion';
 
-const HeartIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-  </svg>
-);
-
 const experiences = [
   {
     title: 'Software Engineer Frontend - Lead',
@@ -59,14 +53,47 @@ const experiences = [
 
 const WorkExperience = () => {
   return (
-    <section id="experience" className="py-24 px-6 sm:px-8 lg:px-12">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
+      {/* Liquid auras */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/3 w-[900px] h-[900px] rounded-full opacity-25 blur-[140px]"
+          style={{ background: 'radial-gradient(circle, #BF00FF 0%, #FF1493 50%, transparent 70%)' }}
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/3 w-[800px] h-[800px] rounded-full opacity-20 blur-[140px]"
+          style={{ background: 'radial-gradient(circle, #FF1493 0%, #FF8C69 50%, transparent 70%)' }}
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 80, 0],
+            scale: [1, 0.9, 1],
+          }}
+          transition={{
+            duration: 35,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+      
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#4A148C] mb-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
+          style={{ letterSpacing: '-0.02em' }}
         >
           Work Experience
         </motion.h2>
@@ -74,32 +101,30 @@ const WorkExperience = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.company}-${index}`}
-              className="clay-card rounded-[40px] p-8 relative"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="floating-pane rounded-3xl p-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
             >
-              <div className="mb-6">
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#333] mb-2">{exp.title}</h3>
-                <p className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#FF69B4] to-[#BA68C8] mb-4 font-semibold">{exp.company}</p>
-                <p className="text-sm text-[#4A148C]">{exp.stack}</p>
+              <div className="mb-8">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>{exp.title}</h3>
+                <p className="text-lg text-[#FF1493] mb-3 font-semibold">{exp.company}</p>
+                <p className="text-sm text-white/50 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{exp.stack}</p>
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {exp.bullets.map((bullet, bulletIndex) => (
                   <motion.li
                     key={bulletIndex}
-                    className="text-[#333] flex items-start gap-3"
+                    className="text-white/80 flex items-start gap-4 leading-relaxed"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.2 + bulletIndex * 0.1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + bulletIndex * 0.05 }}
                   >
-                    <span className="text-[#FF69B4] mt-1 flex-shrink-0">
-                      <HeartIcon />
-                    </span>
-                    <span className="leading-relaxed">{bullet}</span>
+                    <span className="text-[#FF1493] mt-2 flex-shrink-0">—</span>
+                    <span>{bullet}</span>
                   </motion.li>
                 ))}
               </ul>

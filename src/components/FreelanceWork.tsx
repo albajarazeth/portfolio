@@ -1,12 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
-const SparkleIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0L14.5 8.5L23 11L14.5 13.5L12 22L9.5 13.5L1 11L9.5 8.5L12 0Z" />
-  </svg>
-);
-
 const freelanceRoles = [
   {
     title: 'Web Developer',
@@ -67,54 +61,71 @@ const FreelanceWork = () => {
   };
 
   return (
-    <section id="freelance" className="py-24 px-6 sm:px-8 lg:px-12">
-      <div className="max-w-4xl mx-auto">
+    <section id="freelance" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
+      {/* Background liquid auras */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute bottom-1/4 left-1/3 w-[800px] h-[800px] rounded-full opacity-20 blur-[140px]"
+          style={{ background: 'radial-gradient(circle, #FF1493 0%, #BF00FF 50%, transparent 70%)' }}
+          animate={{
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+          }}
+          transition={{
+            duration: 32,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+      
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#4A148C] mb-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
+          style={{ letterSpacing: '-0.02em' }}
         >
           Freelance Work
         </motion.h2>
-        <div className="space-y-4">
+        <div className="space-y-6">
           {freelanceRoles.map((role, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
                 key={`${role.title}-${index}`}
-                className="overflow-hidden rounded-[40px] clay-card"
+                className="overflow-hidden rounded-3xl frosted-glass"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -4 }}
               >
                 <motion.button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-[#FF69B4] focus:ring-offset-2 focus:ring-offset-white rounded-[40px] transition-colors"
-                  whileHover={{ backgroundColor: 'rgba(255, 105, 180, 0.05)' }}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none rounded-3xl transition-colors"
+                  whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#333] mb-1">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
                       {role.title}
                     </h3>
                     {role.subtitle && (
-                      <p className="text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#FF69B4] to-[#BA68C8] mb-2 font-semibold">
+                      <p className="text-sm text-[#FF1493] mb-2 font-semibold">
                         {role.subtitle}
                       </p>
                     )}
-                    <p className="text-xs text-[#4A148C]">{role.stack}</p>
+                    <p className="text-xs text-white/50 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{role.stack}</p>
                   </div>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     className="ml-4 flex-shrink-0"
                   >
                     <svg
-                      className="w-6 h-6 text-[#FF69B4]"
+                      className="w-5 h-5 text-[#FF1493]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -134,23 +145,31 @@ const FreelanceWork = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      transition={{ 
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                        mass: 0.8
+                      }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-2 border-t border-pink-300">
-                        <ul className="space-y-3 mt-4">
+                      <div className="px-8 pb-8 pt-2 border-t border-white/10">
+                        <ul className="space-y-4 mt-6">
                           {role.bullets.map((bullet, bulletIndex) => (
                             <motion.li
                               key={bulletIndex}
-                              className="text-[#333] flex items-start text-sm sm:text-base"
+                              className="text-white/70 flex items-start text-sm sm:text-base leading-relaxed"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.3, delay: bulletIndex * 0.1 }}
+                              transition={{ 
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 25,
+                                delay: bulletIndex * 0.05
+                              }}
                             >
-                              <span className="text-[#FF69B4] mr-3 mt-1.5 flex-shrink-0">
-                                <SparkleIcon />
-                              </span>
-                              <span className="leading-relaxed">{bullet}</span>
+                              <span className="text-[#FF1493] mr-3 mt-2 flex-shrink-0">—</span>
+                              <span>{bullet}</span>
                             </motion.li>
                           ))}
                         </ul>
