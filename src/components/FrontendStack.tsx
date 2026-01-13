@@ -45,10 +45,10 @@ const TechIcon = ({ tech, index }: { tech: typeof frontendTech[0], index: number
 
 const FrontendStack = () => {
   return (
-    <section id="frontend" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #F5F3FF 50%, #FDF2F8 100%)' }}>
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="frontend" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #F5F3FF 50%, #FDF2F8 100%)' }}>
+      <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-16 lg:mb-24 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -61,9 +61,16 @@ const FrontendStack = () => {
         >
           Frontend Stack
         </motion.h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-12 md:gap-16">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto">
           {frontendTech.map((tech, index) => (
-            <TechIcon key={tech.name} tech={tech} index={index} />
+            <motion.div
+              key={tech.name}
+              style={{ 
+                transform: index % 2 === 0 ? 'translateY(-20px)' : 'translateY(20px)',
+              }}
+            >
+              <TechIcon tech={tech} index={index} />
+            </motion.div>
           ))}
         </div>
       </div>

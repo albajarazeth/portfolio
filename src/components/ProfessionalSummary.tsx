@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const ProfessionalSummary = () => {
   return (
-    <section id="summary" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FEF3F2 50%, #ECFDF5 100%)' }}>
+    <section id="summary" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FEF3F2 50%, #ECFDF5 100%)' }}>
       {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -15,20 +15,33 @@ const ProfessionalSummary = () => {
         />
       </div>
       
-      <div className="max-w-4xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
-        >
-          <div className="frosted-glass rounded-[40px] p-12 md:p-16 floating-card">
-            <p className="text-lg sm:text-xl md:text-2xl text-[#1A1A2E]/85 leading-relaxed text-balance font-light" style={{ letterSpacing: '-0.01em' }}>
-            I specialize in building scalable web applications using React, TypeScript, and robust backend systems. Currently, I'm pursuing a part-time master's degree, expanding my expertise into AI and machine learning to apply intelligent solutions to real-world challenges. I'm recognized for quickly mastering new technologies, collaborating seamlessly across teams, and delivering clean, maintainable code. I'm passionate about automation and streamlining processes, always looking for ways to innovate and enhance efficiency.
+      <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <motion.div
+            className="lg:col-span-8 lg:col-start-3"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+          <div className="frosted-glass rounded-[40px] p-10 md:p-14 lg:p-16 floating-card relative">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#1A1A2E]/90 leading-relaxed text-balance font-light space-y-4" style={{ letterSpacing: '-0.005em', fontFamily: 'Google Sans, Inter, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+              <span className="block font-semibold text-[#1A1A2E]" style={{ fontFamily: 'Clash Display, Space Grotesk, Poppins, Nunito, sans-serif', letterSpacing: '-0.01em' }}>
+                I specialize in building scalable web applications using React, TypeScript, and robust backend systems.
+              </span>
+              <span className="block">
+                Currently, I'm pursuing a part-time master's degree, expanding my expertise into AI and machine learning to apply intelligent solutions to real-world challenges.
+              </span>
+              <span className="block">
+                I'm recognized for quickly mastering new technologies, collaborating seamlessly across teams, and delivering clean, maintainable code.
+              </span>
+              <span className="block">
+                I'm passionate about automation and streamlining processes, always looking for ways to innovate and enhance efficiency.
+              </span>
             </p>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

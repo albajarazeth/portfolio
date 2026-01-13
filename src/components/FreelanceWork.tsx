@@ -61,7 +61,7 @@ const FreelanceWork = () => {
   };
 
   return (
-    <section id="freelance" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FDF2F8 50%, #ECFDF5 100%)' }}>
+    <section id="freelance" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FDF2F8 50%, #ECFDF5 100%)' }}>
       {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -75,9 +75,9 @@ const FreelanceWork = () => {
         <div className="abstract-wave bottom-0 rotate-180" />
       </div>
       
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-16 lg:mb-24 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -90,21 +90,23 @@ const FreelanceWork = () => {
         >
           Freelance Work
         </motion.h2>
-        <div className="space-y-6">
+        <div className="space-y-5 lg:space-y-6">
           {freelanceRoles.map((role, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
                 key={`${role.title}-${index}`}
-                className="overflow-hidden rounded-[40px] frosted-glass floating-card"
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                className={`overflow-hidden rounded-[40px] frosted-glass floating-card relative ${
+                  index % 2 === 0 ? 'lg:mr-6' : 'lg:ml-6'
+                }`}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <motion.button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none rounded-[40px] transition-colors"
+                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none rounded-[40px] transition-colors cursor-pointer"
                   whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
                   whileTap={{ scale: 0.98 }}
                 >

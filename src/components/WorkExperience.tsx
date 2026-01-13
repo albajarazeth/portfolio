@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { FiBriefcase } from 'react-icons/fi';
 
 const experiences = [
   {
@@ -53,7 +54,7 @@ const experiences = [
 
 const WorkExperience = () => {
   return (
-    <section id="experience" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #FEF3F2 50%, #F5F3FF 100%)' }}>
+    <section id="experience" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #FEF3F2 50%, #F5F3FF 100%)' }}>
       {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -67,57 +68,121 @@ const WorkExperience = () => {
         <div className="abstract-wave bottom-0 rotate-180" />
       </div>
       
-      <div className="max-w-5xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-16 lg:mb-24 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ 
-            fontFamily: 'Poppins, Nunito, sans-serif',
-            fontWeight: 900,
-            letterSpacing: '-0.02em' 
+            fontFamily: 'Clash Display, Space Grotesk, Poppins, Nunito, sans-serif',
+            fontWeight: 600,
+            letterSpacing: '-0.015em' 
           }}
         >
           Work Experience
         </motion.h2>
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={`${exp.company}-${index}`}
-              className="frosted-glass rounded-[40px] p-10 floating-card interactive-glow"
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="mb-8">
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#1A1A2E] mb-2" style={{ 
-                  fontFamily: 'Poppins, Nunito, sans-serif',
-                  fontWeight: 800,
-                  letterSpacing: '-0.01em' 
-                }}>{exp.title}</h3>
-                <p className="text-lg vibrant-text mb-3 font-semibold">{exp.company}</p>
-                <p className="text-sm text-[#1A1A2E]/65 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{exp.stack}</p>
-              </div>
-              <ul className="space-y-4">
-                {exp.bullets.map((bullet, bulletIndex) => (
-                  <motion.li
-                    key={bulletIndex}
-                    className="text-[#1A1A2E]/85 flex items-start gap-4 leading-relaxed"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + bulletIndex * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <span className="text-[#B794F6] mt-2 flex-shrink-0 font-bold">—</span>
-                    <span>{bullet}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+        
+        {/* Glassmorphism Container Lane */}
+        <div className="max-w-6xl mx-auto">
+          <div className="frosted-glass rounded-[40px] p-8 lg:p-12 relative overflow-hidden">
+            {/* Ambient glow wash */}
+            <div className="absolute inset-0 rounded-[40px] pointer-events-none" style={{
+              background: 'linear-gradient(135deg, rgba(183, 148, 246, 0.05), rgba(244, 114, 182, 0.05), rgba(103, 232, 249, 0.05))',
+              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.6)'
+            }} />
+
+            <div className="relative z-10 flex flex-col gap-12 lg:gap-16">
+              {experiences.map((exp, index) => (
+                <motion.div
+                  key={`${exp.company}-${index}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  className={`relative flex flex-col gap-6 lg:gap-8 ${index % 2 === 0 ? 'lg:items-start' : 'lg:items-end'}`}
+                >
+                  {/* Orbital anchor */}
+                  <div className="absolute -z-0" style={{
+                    top: '-16px',
+                    left: index % 2 === 0 ? '-32px' : 'auto',
+                    right: index % 2 !== 0 ? '-32px' : 'auto',
+                    width: '160px',
+                    height: '160px',
+                    filter: 'blur(40px)',
+                    background: index % 2 === 0
+                      ? 'radial-gradient(circle, rgba(183,148,246,0.35), rgba(244,114,182,0.25), rgba(103,232,249,0.2))'
+                      : 'radial-gradient(circle, rgba(244,114,182,0.35), rgba(103,232,249,0.25), rgba(183,148,246,0.2))'
+                  }} />
+
+                  {/* Role content */}
+                  <div className="frosted-glass rounded-[32px] p-6 lg:p-8 floating-card max-w-3xl w-full" style={{
+                    boxShadow: '0 18px 48px rgba(183,148,246,0.2), 0 6px 18px rgba(244,114,182,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
+                  }}>
+                    <div className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-3">
+                          <div className="mt-1 flex h-9 w-9 items-center justify-center rounded-full frosted-glass" style={{
+                            boxShadow: '0 8px 22px rgba(183,148,246,0.35), 0 0 18px rgba(244,114,182,0.25)'
+                          }}>
+                            <FiBriefcase className="text-[#B794F6] text-xl" />
+                          </div>
+                          <div className="flex-1 text-left">
+                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1A1A2E]" style={{ 
+                              fontFamily: 'Poppins, Nunito, sans-serif',
+                              fontWeight: 800,
+                              letterSpacing: '-0.01em' 
+                            }}>
+                              {exp.title}
+                            </h3>
+                            <p className="text-lg lg:text-xl vibrant-text font-semibold">{exp.company}</p>
+                            <p className="text-xs sm:text-sm text-[#1A1A2E]/65 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>
+                              {exp.stack}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <ul className="space-y-3 lg:space-y-3.5">
+                        {exp.bullets.map((bullet, bulletIndex) => (
+                          <motion.li
+                            key={bulletIndex}
+                            className="text-sm sm:text-base lg:text-base text-[#1A1A2E]/90 flex items-start gap-3 leading-relaxed"
+                            initial={{ opacity: 0, x: index % 2 === 0 ? -6 : 6 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.35, delay: index * 0.08 + bulletIndex * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                          >
+                            <span className="text-[#B794F6] mt-1.5 flex-shrink-0 font-bold text-base">—</span>
+                            <span>{bullet}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Connector accent except last */}
+                  {index < experiences.length - 1 && (
+                    <motion.div
+                      className="w-full flex justify-center"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 + 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div className="h-16 lg:h-20 w-px relative">
+                        <div className="absolute inset-0 w-[3px] rounded-full" style={{
+                          background: 'linear-gradient(180deg, rgba(183,148,246,0.35), rgba(244,114,182,0.25), rgba(103,232,249,0.2))',
+                          boxShadow: '0 0 18px rgba(183,148,246,0.4)'
+                        }} />
+                      </div>
+                    </motion.div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

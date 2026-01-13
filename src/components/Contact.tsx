@@ -1,6 +1,6 @@
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import type { HTMLMotionProps } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 interface MagneticButtonProps extends Omit<HTMLMotionProps<'a'>, 'ref'> {
   children: React.ReactNode;
@@ -57,8 +57,32 @@ const MagneticButton = ({ children, href, ...props }: MagneticButtonProps) => {
 };
 
 const Contact = () => {
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const email = 'jarazethalba@gmail.com';
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsEmailModalOpen(true);
+  };
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsEmailModalOpen(false);
+    setCopied(false);
+  };
+
   return (
-    <section id="contact" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FEF3F2 0%, #F5F3FF 50%, #ECFDF5 100%)' }}>
+    <section id="contact" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FEF3F2 0%, #F5F3FF 50%, #ECFDF5 100%)' }}>
       {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -72,9 +96,9 @@ const Contact = () => {
         <div className="abstract-wave bottom-0 rotate-180" />
       </div>
       
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="max-w-5xl mx-auto text-center relative z-10 px-6 sm:px-8 lg:px-12">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-16 vibrant-text"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-12 lg:mb-20 text-black"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -88,7 +112,7 @@ const Contact = () => {
           Get in touch
         </motion.h2>
         <motion.div
-          className="frosted-glass rounded-[40px] p-12 md:p-16 mb-16 floating-card"
+          className="frosted-glass rounded-[40px] p-10 md:p-14 lg:p-16 mb-12 lg:mb-16 floating-card max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: '-50px' }}
@@ -113,13 +137,15 @@ const Contact = () => {
             >
               GitHub
             </MagneticButton>
-            <MagneticButton
-              href="mailto:jarazethalba@gmail.com"
+            <motion.button
+              onClick={handleEmailClick}
               className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide"
               style={{ letterSpacing: '0.05em' }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
             >
               Email
-            </MagneticButton>
+            </motion.button>
           </div>
         </motion.div>
         <motion.footer
@@ -139,6 +165,79 @@ const Contact = () => {
           <p className="mt-2 text-sm text-[#1A1A2E]/60">&copy; {new Date().getFullYear()} Alba Garza. All rights reserved.</p>
         </motion.footer>
       </div>
+
+      {/* Email Modal */}
+      <AnimatePresence>
+        {isEmailModalOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleCloseModal}
+            />
+            
+            {/* Modal */}
+            <motion.div
+              className="fixed inset-0 flex items-center justify-center z-50 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleCloseModal}
+            >
+              <motion.div
+                className="frosted-glass rounded-[32px] p-8 max-w-md w-full relative"
+                initial={{ scale: 0.9, y: 20, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.9, y: 20, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={handleCloseModal}
+                  className="absolute top-4 right-4 text-[#1A1A2E]/60 hover:text-[#1A1A2E] transition-colors"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <div className="text-center space-y-6">
+                  <h3 className="text-2xl font-bold text-[#1A1A2E]" style={{ 
+                    fontFamily: 'Clash Display, Space Grotesk, Poppins, Nunito, sans-serif',
+                    fontWeight: 600,
+                    letterSpacing: '-0.01em'
+                  }}>
+                    Email Address
+                  </h3>
+                  
+                  <div className="flex items-center justify-center gap-3">
+                    <p 
+                      className="text-lg text-[#1A1A2E]/90 font-medium select-all"
+                      style={{ fontFamily: 'Google Sans, Inter, sans-serif' }}
+                    >
+                      {email}
+                    </p>
+                  </div>
+
+                  <motion.button
+                    onClick={handleCopyEmail}
+                    className="gradient-button px-8 py-3 text-sm font-bold uppercase tracking-wide w-full"
+                    style={{ letterSpacing: '0.05em' }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {copied ? 'Copied!' : 'Copy Email'}
+                  </motion.button>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

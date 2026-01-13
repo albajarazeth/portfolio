@@ -29,7 +29,7 @@ const projects = [
 
 const PersonalProjects = () => {
   return (
-    <section id="projects" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FDF2F8 0%, #F0F9FF 50%, #F5F3FF 100%)' }}>
+    <section id="projects" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FDF2F8 0%, #F0F9FF 50%, #F5F3FF 100%)' }}>
       {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -43,9 +43,9 @@ const PersonalProjects = () => {
         <div className="abstract-wave top-0" />
       </div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-16 lg:mb-24 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -58,18 +58,23 @@ const PersonalProjects = () => {
         >
           Personal Projects
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.a
               key={project.title}
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative overflow-hidden rounded-[40px] frosted-glass floating-card interactive-glow block ${project.size}`}
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              className={`group relative overflow-hidden rounded-[40px] frosted-glass floating-card interactive-glow block ${project.size} ${
+                index === 0 ? 'md:row-span-2' : ''
+              }`}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                transform: index % 3 === 1 ? 'translateY(-15px)' : index % 3 === 2 ? 'translateY(15px)' : 'none',
+              }}
             >
               <div className="aspect-video overflow-hidden relative rounded-t-[40px]">
                 <img

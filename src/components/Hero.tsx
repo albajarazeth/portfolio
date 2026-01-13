@@ -47,9 +47,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             style={{ 
-              fontFamily: 'Poppins, Nunito, sans-serif',
-              fontWeight: 900,
-              letterSpacing: '-0.03em'
+              fontFamily: 'Clash Display, Space Grotesk, Poppins, Nunito, sans-serif',
+              fontWeight: 600,
+              letterSpacing: '-0.02em'
             }}
           >
             Alba Garza
@@ -60,7 +60,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-sm sm:text-base tracking-[3px] uppercase text-[#1A1A2E]/75 font-semibold" style={{ letterSpacing: '0.15em' }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl tracking-[0.3em] uppercase text-[#1A1A2E] font-bold" style={{ letterSpacing: '0.3em', fontWeight: 800 }}>
               Senior Software Engineer
             </p>
           </motion.div>
