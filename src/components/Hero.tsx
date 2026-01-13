@@ -86,7 +86,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             style={{ letterSpacing: '-0.02em' }}
           >
-            Full-stack developer specializing in frontend architecture and AI-powered applications.
+            Full-Stack Engineer Specializing in Frontend Development & Process Optimization | Enthusiastic About AI Solutions
           </motion.p>
         </motion.div>
       </div>

@@ -42,7 +42,7 @@ const ProfessionalSummary = () => {
         >
           <div className="frosted-glass rounded-3xl p-12 md:p-16">
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed text-balance font-light" style={{ letterSpacing: '-0.02em' }}>
-              Software Engineer with 3+ years of full-stack experience building scalable web applications using React, TypeScript, and backend systems. Currently pursuing a part-time master's and expanding into AI and machine learning to apply intelligent solutions to real-world problems. Recognized for quickly mastering new technologies, collaborating across teams, and delivering clean, maintainable solutions.
+            I specialize in building scalable web applications using React, TypeScript, and robust backend systems. Currently, I'm pursuing a part-time master's degree, expanding my expertise into AI and machine learning to apply intelligent solutions to real-world challenges. I’m recognized for quickly mastering new technologies, collaborating seamlessly across teams, and delivering clean, maintainable code. I’m passionate about automation and streamlining processes, always looking for ways to innovate and enhance efficiency.
             </p>
           </div>
         </motion.div>
