@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import type { HTMLMotionProps } from 'framer-motion';
 import { useRef, useState } from 'react';
+import CVDownloadButton from './CVDownloadButton';
 
 interface MagneticButtonProps extends Omit<HTMLMotionProps<'a'>, 'ref'> {
   children: React.ReactNode;
@@ -139,13 +140,14 @@ const Contact = () => {
             </MagneticButton>
             <motion.button
               onClick={handleEmailClick}
-              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide"
+              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide cursor-pointer"
               style={{ letterSpacing: '0.05em' }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
               Email
             </motion.button>
+            <CVDownloadButton />
           </div>
         </motion.div>
         <motion.footer
@@ -225,7 +227,7 @@ const Contact = () => {
 
                   <motion.button
                     onClick={handleCopyEmail}
-                    className="gradient-button px-8 py-3 text-sm font-bold uppercase tracking-wide w-full"
+                    className="gradient-button px-8 py-3 text-sm font-bold uppercase tracking-wide w-full cursor-pointer"
                     style={{ letterSpacing: '0.05em' }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
