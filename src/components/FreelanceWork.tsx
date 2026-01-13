@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import FloralPattern from './FloralPattern';
 
 const freelanceRoles = [
   {
@@ -62,17 +63,12 @@ const FreelanceWork = () => {
 
   return (
     <section id="freelance" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FDF2F8 50%, #ECFDF5 100%)' }}>
-      {/* Abstract Shapes */}
+      {/* Subtle Pink Floral Accents */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] abstract-shape-2 animate-abstract-2 parallax-medium"
-          style={{ background: 'linear-gradient(135deg, #FB9A8B, #B794F6)' }}
-        />
-        <motion.div
-          className="absolute top-1/4 right-1/4 w-[450px] h-[450px] abstract-shape animate-abstract-4"
-          style={{ background: 'linear-gradient(135deg, #67E8F9, #F472B6)' }}
-        />
-        <div className="abstract-wave bottom-0 rotate-180" />
+        <FloralPattern position="top" size="medium" />
+        <FloralPattern position="bottom" size="large" />
+        <FloralPattern position="left" size="small" />
+        <FloralPattern position="right" size="small" />
       </div>
       
       <div className="max-w-5xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">

@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { FiBriefcase } from 'react-icons/fi';
+import FloralPattern from './FloralPattern';
 
 const experiences = [
   {
     title: 'Software Engineer Frontend - Lead',
-    company: 'Towa â€“ Easybee AI',
+    company: 'Towa – Easybee AI',
     stack: 'React, TypeScript, FastAPI, SQL, JavaScript, HTML, CSS',
     bullets: [
       'Owned the frontend architecture and UI/UX direction for AI agent products, acting as the primary decision-maker for workflows and interface design',
@@ -55,17 +56,12 @@ const experiences = [
 const WorkExperience = () => {
   return (
     <section id="experience" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #FEF3F2 50%, #F5F3FF 100%)' }}>
-      {/* Abstract Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/4 left-1/3 w-[600px] h-[600px] abstract-shape animate-abstract parallax-slow"
-          style={{ background: 'linear-gradient(135deg, #B794F6, #F472B6)' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/3 w-[550px] h-[550px] abstract-shape-2 animate-abstract-2 parallax-medium"
-          style={{ background: 'linear-gradient(135deg, #FB9A8B, #67E8F9)' }}
-        />
-        <div className="abstract-wave bottom-0 rotate-180" />
+      {/* Subtle Pink Floral Accents */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <FloralPattern position="top" size="large" />
+        <FloralPattern position="bottom" size="large" />
+        <FloralPattern position="left" size="medium" />
+        <FloralPattern position="right" size="medium" />
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">
@@ -120,31 +116,30 @@ const WorkExperience = () => {
                   <div className="frosted-glass rounded-[32px] p-6 lg:p-8 floating-card max-w-3xl w-full" style={{
                     boxShadow: '0 18px 48px rgba(183,148,246,0.2), 0 6px 18px rgba(244,114,182,0.14), inset 0 1px 0 rgba(255,255,255,0.7)'
                   }}>
-                    <div className="space-y-4">
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <div className="mt-1 flex h-9 w-9 items-center justify-center rounded-full frosted-glass" style={{
-                            boxShadow: '0 8px 22px rgba(183,148,246,0.35), 0 0 18px rgba(244,114,182,0.25)'
+                    <div className="space-y-5">
+                      <div className="flex items-start gap-4">
+                        <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full frosted-glass flex-shrink-0" style={{
+                          boxShadow: '0 8px 22px rgba(183,148,246,0.35), 0 0 18px rgba(244,114,182,0.25)'
+                        }}>
+                          <FiBriefcase className="text-[#B794F6] text-xl" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1A1A2E] mb-2" style={{ 
+                            fontFamily: 'Poppins, Nunito, sans-serif',
+                            fontWeight: 800,
+                            letterSpacing: '-0.01em',
+                            lineHeight: '1.2'
                           }}>
-                            <FiBriefcase className="text-[#B794F6] text-xl" />
-                          </div>
-                          <div className="flex-1 text-left">
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1A1A2E]" style={{ 
-                              fontFamily: 'Poppins, Nunito, sans-serif',
-                              fontWeight: 800,
-                              letterSpacing: '-0.01em' 
-                            }}>
-                              {exp.title}
-                            </h3>
-                            <p className="text-lg lg:text-xl vibrant-text font-semibold">{exp.company}</p>
-                            <p className="text-xs sm:text-sm text-[#1A1A2E]/65 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>
-                              {exp.stack}
-                            </p>
-                          </div>
+                            {exp.title}
+                          </h3>
+                          <p className="text-lg lg:text-xl vibrant-text font-semibold mb-2">{exp.company}</p>
+                          <p className="text-xs sm:text-sm text-[#1A1A2E]/65 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>
+                            {exp.stack}
+                          </p>
                         </div>
                       </div>
 
-                      <ul className="space-y-3 lg:space-y-3.5">
+                      <ul className="space-y-3 lg:space-y-3.5 mt-6">
                         {exp.bullets.map((bullet, bulletIndex) => (
                           <motion.li
                             key={bulletIndex}
@@ -154,8 +149,8 @@ const WorkExperience = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.35, delay: index * 0.08 + bulletIndex * 0.04, ease: [0.16, 1, 0.3, 1] }}
                           >
-                            <span className="text-[#B794F6] mt-1.5 flex-shrink-0 font-bold text-base">â€”</span>
-                            <span>{bullet}</span>
+                            <span className="text-[#B794F6] mt-1.5 flex-shrink-0 font-bold text-base">—</span>
+                            <span className="flex-1">{bullet}</span>
                           </motion.li>
                         ))}
                       </ul>

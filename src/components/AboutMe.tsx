@@ -1,20 +1,16 @@
 import { motion } from 'framer-motion';
 import myPhoto from '../assets/my-photo.png';
+import FloralPattern from './FloralPattern';
 
 const AboutMe = () => {
   return (
     <section id="about" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FDF2F8 0%, #ECFDF5 50%, #F0F9FF 100%)' }}>
-      {/* Abstract Modern Shapes */}
+      {/* Subtle Pink Floral Accents */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/4 right-1/3 w-[600px] h-[600px] abstract-shape animate-abstract parallax-slow"
-          style={{ background: 'linear-gradient(135deg, #F472B6, #FB9A8B)' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] abstract-shape-2 animate-abstract-2 parallax-medium"
-          style={{ background: 'linear-gradient(135deg, #67E8F9, #B794F6)' }}
-        />
-        <div className="abstract-wave top-0" />
+        <FloralPattern position="top" size="medium" />
+        <FloralPattern position="bottom" size="medium" />
+        <FloralPattern position="left" size="small" />
+        <FloralPattern position="right" size="small" />
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">

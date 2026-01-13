@@ -16,7 +16,7 @@ const CVDownloadButton = () => {
   return (
     <motion.button
       onClick={handleDownload}
-      className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide flex items-center gap-2 justify-center cursor-pointer"
+      className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide flex items-center gap-2 justify-center cursor-pointer text-center"
       style={{ letterSpacing: '0.05em' }}
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}

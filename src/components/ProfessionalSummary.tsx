@@ -1,18 +1,15 @@
 import { motion } from 'framer-motion';
+import FloralPattern from './FloralPattern';
 
 const ProfessionalSummary = () => {
   return (
     <section id="summary" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FEF3F2 50%, #ECFDF5 100%)' }}>
-      {/* Abstract Shapes */}
+      {/* Subtle Pink Floral Accents */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] abstract-shape-3 animate-abstract-3"
-          style={{ background: 'linear-gradient(135deg, #B794F6, #60A5FA)' }}
-        />
-        <motion.div
-          className="absolute top-1/3 right-1/4 w-[500px] h-[500px] abstract-shape animate-abstract-4 parallax-slow"
-          style={{ background: 'linear-gradient(135deg, #FB9A8B, #67E8F9)' }}
-        />
+        <FloralPattern position="top" size="medium" />
+        <FloralPattern position="bottom" size="medium" />
+        <FloralPattern position="left" size="small" />
+        <FloralPattern position="right" size="small" />
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10 px-6 sm:px-8 lg:px-12">

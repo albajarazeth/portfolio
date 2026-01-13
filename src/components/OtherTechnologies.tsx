@@ -74,37 +74,24 @@ const techCategories = [
 
 const TechBadge = ({ item, index }: { item: string, index: number }) => {
   const Icon = iconMap[item];
-  const colors = techColors[item] || { gradient: 'linear-gradient(135deg, #666, #999)', glow: 'rgba(100, 100, 100, 0.2)' };
 
   return (
-    <motion.span
+    <span
       className="relative px-4 py-2 text-sm font-bold rounded-full overflow-hidden group"
-      initial={{ scale: 0.8 }}
-      whileInView={{ scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
       style={{
         opacity: 1,
         background: 'rgba(255, 255, 255, 0.95)',
-        border: `2px solid rgba(183, 148, 246, 0.9)`,
-        boxShadow: `inset 0 0 25px ${colors.glow}, 0 8px 24px rgba(183, 148, 246, 0.5), 0 0 30px rgba(183, 148, 246, 0.3), 0 4px 12px rgba(19, 39, 67, 0.2)`,
+        border: '2px solid rgba(183, 148, 246, 0.9)',
+        boxShadow: 'inset 0 0 20px rgba(183, 148, 246, 0.15), 0 8px 24px rgba(183, 148, 246, 0.3), 0 4px 12px rgba(183, 148, 246, 0.2)',
       }}
     >
-      <span 
-        className="absolute inset-0 rounded-full opacity-90"
-        style={{
-          background: colors.gradient,
-          filter: 'blur(3px)',
-          zIndex: -1,
-        }}
-      />
       <span className="relative z-10 flex items-center gap-2 tech-pill-text">
         {Icon && (
           <Icon className="text-base tech-pill-icon" />
         )}
         <span className="tech-pill-text" style={{ fontWeight: 800 }}>{item}</span>
       </span>
-    </motion.span>
+    </span>
   );
 };
 

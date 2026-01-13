@@ -229,6 +229,51 @@
     opacity: 0.5;
   }
 
+  /* Subtle Pink Floral Patterns */
+  .floral-pattern {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.15;
+    z-index: 0;
+  }
+
+  .floral-pattern svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .floral-edge-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    transform: translateY(-50%);
+  }
+
+  .floral-edge-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    transform: translateY(50%);
+  }
+
+  .floral-edge-left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    transform: translateX(-50%);
+  }
+
+  .floral-edge-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    transform: translateX(50%);
+  }
+
   /* Interactive Glow on Hover - Subtle and Refined */
   .interactive-glow:hover {
     box-shadow: 
@@ -260,6 +305,10 @@
     box-shadow: 
       0 8px 24px rgba(183, 148, 246, 0.4),
       0 4px 12px rgba(251, 154, 139, 0.3);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .gradient-button::before {
@@ -309,15 +358,15 @@
     transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  /* Ensure tech pills stay dark */
+  /* Ensure tech pills stay pastel purple */
   .tech-pill-text {
-    color: #132743 !important;
+    color: #B794F6 !important;
     opacity: 1 !important;
   }
 
   .tech-pill-icon {
-    color: #132743 !important;
-    fill: #132743 !important;
+    color: #B794F6 !important;
+    fill: #B794F6 !important;
     opacity: 1 !important;
   }
 }

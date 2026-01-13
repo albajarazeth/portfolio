@@ -1,37 +1,15 @@
 import { motion } from 'framer-motion';
+import FloralPattern from './FloralPattern';
 
 const Hero = () => {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FEF3F2 0%, #F0F9FF 50%, #F5F3FF 100%)' }}>
-      {/* Abstract Modern Shapes - Layered for Depth */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large background shapes */}
-        <motion.div
-          className="absolute top-0 right-0 w-[800px] h-[800px] abstract-shape animate-abstract parallax-slow"
-          style={{ background: 'linear-gradient(135deg, #B794F6, #F472B6)' }}
-        />
-        <motion.div
-          className="absolute bottom-0 left-0 w-[700px] h-[700px] abstract-shape-2 animate-abstract-2 parallax-medium"
-          style={{ background: 'linear-gradient(135deg, #FB9A8B, #67E8F9)' }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] abstract-shape-3 animate-abstract-3"
-          style={{ background: 'linear-gradient(135deg, #60A5FA, #B794F6)' }}
-        />
-        
-        {/* Flowing ribbon effect */}
-        <motion.div
-          className="abstract-ribbon top-1/4 -left-[10%]"
-          animate={{
-            x: [0, 50, 0],
-            rotate: [-5, -3, -5],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+      {/* Subtle Pink Floral Accents */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <FloralPattern position="top" size="large" />
+        <FloralPattern position="bottom" size="large" />
+        <FloralPattern position="left" size="medium" />
+        <FloralPattern position="right" size="medium" />
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">

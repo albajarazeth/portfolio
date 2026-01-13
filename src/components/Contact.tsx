@@ -2,6 +2,7 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motio
 import type { HTMLMotionProps } from 'framer-motion';
 import { useRef, useState } from 'react';
 import CVDownloadButton from './CVDownloadButton';
+import FloralPattern from './FloralPattern';
 
 interface MagneticButtonProps extends Omit<HTMLMotionProps<'a'>, 'ref'> {
   children: React.ReactNode;
@@ -84,17 +85,12 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FEF3F2 0%, #F5F3FF 50%, #ECFDF5 100%)' }}>
-      {/* Abstract Shapes */}
+      {/* Subtle Pink Floral Accents */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] abstract-shape-3 animate-abstract-3"
-          style={{ background: 'linear-gradient(135deg, #B794F6, #F472B6, #FB9A8B)' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] abstract-shape animate-abstract-4 parallax-slow"
-          style={{ background: 'linear-gradient(135deg, #67E8F9, #60A5FA)' }}
-        />
-        <div className="abstract-wave bottom-0 rotate-180" />
+        <FloralPattern position="top" size="large" />
+        <FloralPattern position="bottom" size="large" />
+        <FloralPattern position="left" size="medium" />
+        <FloralPattern position="right" size="medium" />
       </div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10 px-6 sm:px-8 lg:px-12">
@@ -124,7 +120,7 @@ const Contact = () => {
               href="https://www.linkedin.com/in/albajarazet/"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide"
+              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide text-center flex items-center justify-center"
               style={{ letterSpacing: '0.05em' }}
             >
               LinkedIn
@@ -133,14 +129,14 @@ const Contact = () => {
               href="https://github.com/albajarazeth"
               target="_blank"
               rel="noopener noreferrer"
-              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide"
+              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide text-center flex items-center justify-center"
               style={{ letterSpacing: '0.05em' }}
             >
               GitHub
             </MagneticButton>
             <motion.button
               onClick={handleEmailClick}
-              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide cursor-pointer"
+              className="gradient-button px-10 py-4 text-sm font-bold uppercase tracking-wide cursor-pointer text-center flex items-center justify-center"
               style={{ letterSpacing: '0.05em' }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -227,7 +223,7 @@ const Contact = () => {
 
                   <motion.button
                     onClick={handleCopyEmail}
-                    className="gradient-button px-8 py-3 text-sm font-bold uppercase tracking-wide w-full cursor-pointer"
+                    className="gradient-button px-8 py-3 text-sm font-bold uppercase tracking-wide w-full cursor-pointer text-center flex items-center justify-center"
                     style={{ letterSpacing: '0.05em' }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
