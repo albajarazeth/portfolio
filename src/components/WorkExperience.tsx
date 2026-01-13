@@ -5,7 +5,7 @@ import FloralPattern from './FloralPattern';
 const experiences = [
   {
     title: 'Software Engineer Frontend - Lead',
-    company: 'Towa – Easybee AI',
+    company: 'Towa - Easybee AI',
     stack: 'React, TypeScript, FastAPI, SQL, JavaScript, HTML, CSS',
     bullets: [
       'Owned the frontend architecture and UI/UX direction for AI agent products, acting as the primary decision-maker for workflows and interface design',
@@ -149,7 +149,7 @@ const WorkExperience = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.35, delay: index * 0.08 + bulletIndex * 0.04, ease: [0.16, 1, 0.3, 1] }}
                           >
-                            <span className="text-[#B794F6] mt-1.5 flex-shrink-0 font-bold text-base">—</span>
+                            <span className="text-[#B794F6] mt-1.5 flex-shrink-0 font-bold text-base">-</span>
                             <span className="flex-1">{bullet}</span>
                           </motion.li>
                         ))}

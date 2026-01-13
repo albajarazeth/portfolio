@@ -28,27 +28,6 @@ const iconMap: { [key: string]: any } = {
   'Canva': null,
 };
 
-// Brand colors for gradient borders and inner glow
-const techColors: { [key: string]: { gradient: string, glow: string } } = {
-  'AWS': { gradient: 'linear-gradient(135deg, #FF9900, #FF6600)', glow: 'rgba(255, 153, 0, 0.2)' },
-  'Docker': { gradient: 'linear-gradient(135deg, #0db7ed, #0066cc)', glow: 'rgba(13, 183, 237, 0.2)' },
-  'Jenkins': { gradient: 'linear-gradient(135deg, #D24939, #8B0000)', glow: 'rgba(210, 73, 57, 0.2)' },
-  'CI/CD': { gradient: 'linear-gradient(135deg, #F05032, #C73E1D)', glow: 'rgba(240, 80, 50, 0.2)' },
-  'Git': { gradient: 'linear-gradient(135deg, #F05032, #C73E1D)', glow: 'rgba(240, 80, 50, 0.2)' },
-  'Jest': { gradient: 'linear-gradient(135deg, #C21325, #8B0000)', glow: 'rgba(194, 19, 37, 0.2)' },
-  'Cypress': { gradient: 'linear-gradient(135deg, #17202C, #5A5A5A)', glow: 'rgba(23, 32, 44, 0.2)' },
-  'JUnit': { gradient: 'linear-gradient(135deg, #C21325, #8B0000)', glow: 'rgba(194, 19, 37, 0.2)' },
-  'Postman': { gradient: 'linear-gradient(135deg, #FF6C37, #FF4500)', glow: 'rgba(255, 108, 55, 0.2)' },
-  'Squarespace': { gradient: 'linear-gradient(135deg, #000000, #333333)', glow: 'rgba(0, 0, 0, 0.2)' },
-  'Shopify': { gradient: 'linear-gradient(135deg, #96BF48, #5E8E3E)', glow: 'rgba(150, 191, 72, 0.2)' },
-  'WordPress': { gradient: 'linear-gradient(135deg, #21759B, #0F4C75)', glow: 'rgba(33, 117, 155, 0.2)' },
-  'Jira': { gradient: 'linear-gradient(135deg, #0052CC, #003D99)', glow: 'rgba(0, 82, 204, 0.2)' },
-  'Asana': { gradient: 'linear-gradient(135deg, #F06A6A, #E84A5F)', glow: 'rgba(240, 106, 106, 0.2)' },
-  'Confluence': { gradient: 'linear-gradient(135deg, #172B4D, #0052CC)', glow: 'rgba(23, 43, 77, 0.2)' },
-  'Figma': { gradient: 'linear-gradient(135deg, #F24E1E, #A259FF)', glow: 'rgba(242, 78, 30, 0.2)' },
-  'Canva': { gradient: 'linear-gradient(135deg, #00C4CC, #00A8B5)', glow: 'rgba(0, 196, 204, 0.2)' },
-};
-
 const techCategories = [
   {
     title: 'Cloud & DevOps',
@@ -72,7 +51,7 @@ const techCategories = [
   },
 ];
 
-const TechBadge = ({ item, index }: { item: string, index: number }) => {
+const TechBadge = ({ item }: { item: string }) => {
   const Icon = iconMap[item];
 
   return (
@@ -134,8 +113,8 @@ const OtherTechnologies = () => {
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-3">
-                {category.items.map((item, itemIndex) => (
-                  <TechBadge key={item} item={item} index={itemIndex} />
+                {category.items.map((item) => (
+                  <TechBadge key={item} item={item} />
                 ))}
               </div>
             </motion.div>
