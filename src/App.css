@@ -5,26 +5,28 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Modern Gradient */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0D0D0D;
+  background: linear-gradient(135deg, #FEF3F2, #F0F9FF, #F5F3FF);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 107, 157, 0.5);
+  background: linear-gradient(180deg, #B794F6, #F472B6, #FB9A8B);
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 107, 157, 0.7);
+  background: linear-gradient(180deg, #F472B6, #FB9A8B, #67E8F9);
+  box-shadow: 0 0 12px rgba(183, 148, 246, 0.6);
 }
 
 /* Selection color */
 ::selection {
-  background-color: rgba(255, 107, 157, 0.3);
-  color: #FFFFFF;
+  background-color: rgba(183, 148, 246, 0.3);
+  color: #1A1A2E;
 }

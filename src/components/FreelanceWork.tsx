@@ -61,32 +61,32 @@ const FreelanceWork = () => {
   };
 
   return (
-    <section id="freelance" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
-      {/* Background liquid auras */}
+    <section id="freelance" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F5F3FF 0%, #FDF2F8 50%, #ECFDF5 100%)' }}>
+      {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute bottom-1/4 left-1/3 w-[800px] h-[800px] rounded-full opacity-20 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #FF1493 0%, #BF00FF 50%, transparent 70%)' }}
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 32,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] abstract-shape-2 animate-abstract-2 parallax-medium"
+          style={{ background: 'linear-gradient(135deg, #FB9A8B, #B794F6)' }}
         />
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-[450px] h-[450px] abstract-shape animate-abstract-4"
+          style={{ background: 'linear-gradient(135deg, #67E8F9, #F472B6)' }}
+        />
+        <div className="abstract-wave bottom-0 rotate-180" />
       </div>
       
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
-          style={{ letterSpacing: '-0.02em' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ 
+            fontFamily: 'Poppins, Nunito, sans-serif',
+            fontWeight: 900,
+            letterSpacing: '-0.02em' 
+          }}
         >
           Freelance Work
         </motion.h2>
@@ -96,28 +96,32 @@ const FreelanceWork = () => {
             return (
               <motion.div
                 key={`${role.title}-${index}`}
-                className="overflow-hidden rounded-3xl frosted-glass"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="overflow-hidden rounded-[40px] frosted-glass floating-card"
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <motion.button
                   onClick={() => toggleAccordion(index)}
-                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none rounded-3xl transition-colors"
-                  whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none rounded-[40px] transition-colors"
+                  whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1A1A2E] mb-2" style={{ 
+                      fontFamily: 'Poppins, Nunito, sans-serif',
+                      fontWeight: 800,
+                      letterSpacing: '-0.01em' 
+                    }}>
                       {role.title}
                     </h3>
                     {role.subtitle && (
-                      <p className="text-sm text-[#FF1493] mb-2 font-semibold">
+                      <p className="text-sm vibrant-text mb-2 font-semibold">
                         {role.subtitle}
                       </p>
                     )}
-                    <p className="text-xs text-white/50 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{role.stack}</p>
+                    <p className="text-xs text-[#1A1A2E]/65 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{role.stack}</p>
                   </div>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
@@ -125,7 +129,7 @@ const FreelanceWork = () => {
                     className="ml-4 flex-shrink-0"
                   >
                     <svg
-                      className="w-5 h-5 text-[#FF1493]"
+                      className="w-5 h-5 vibrant-text"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -153,12 +157,12 @@ const FreelanceWork = () => {
                       }}
                       className="overflow-hidden"
                     >
-                      <div className="px-8 pb-8 pt-2 border-t border-white/10">
+                      <div className="px-8 pb-8 pt-2 border-t border-white/30">
                         <ul className="space-y-4 mt-6">
                           {role.bullets.map((bullet, bulletIndex) => (
                             <motion.li
                               key={bulletIndex}
-                              className="text-white/70 flex items-start text-sm sm:text-base leading-relaxed"
+                              className="text-[#1A1A2E]/80 flex items-start text-sm sm:text-base leading-relaxed"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ 
@@ -168,7 +172,7 @@ const FreelanceWork = () => {
                                 delay: bulletIndex * 0.05
                               }}
                             >
-                              <span className="text-[#FF1493] mr-3 mt-2 flex-shrink-0">—</span>
+                              <span className="text-[#B794F6] mr-3 mt-2 flex-shrink-0 font-bold">—</span>
                               <span>{bullet}</span>
                             </motion.li>
                           ))}

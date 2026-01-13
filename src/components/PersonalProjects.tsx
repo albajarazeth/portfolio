@@ -29,45 +29,32 @@ const projects = [
 
 const PersonalProjects = () => {
   return (
-    <section id="projects" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
-      {/* Background liquid auras */}
+    <section id="projects" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #FDF2F8 0%, #F0F9FF 50%, #F5F3FF 100%)' }}>
+      {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/4 left-1/3 w-[900px] h-[900px] rounded-full opacity-25 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #FF1493 0%, transparent 70%)' }}
-          animate={{
-            x: [0, 70, 0],
-            y: [0, -70, 0],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute top-1/4 left-1/3 w-[600px] h-[600px] abstract-shape animate-abstract parallax-slow"
+          style={{ background: 'linear-gradient(135deg, #F472B6, #B794F6)' }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/3 w-[800px] h-[800px] rounded-full opacity-20 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #BF00FF 0%, #FF8C69 50%, transparent 70%)' }}
-          animate={{
-            x: [0, -60, 0],
-            y: [0, 60, 0],
-          }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute bottom-1/4 right-1/3 w-[550px] h-[550px] abstract-shape-2 animate-abstract-2 parallax-medium"
+          style={{ background: 'linear-gradient(135deg, #60A5FA, #67E8F9)' }}
         />
+        <div className="abstract-wave top-0" />
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
-          style={{ letterSpacing: '-0.02em' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ 
+            fontFamily: 'Poppins, Nunito, sans-serif',
+            fontWeight: 900,
+            letterSpacing: '-0.02em' 
+          }}
         >
           Personal Projects
         </motion.h2>
@@ -78,13 +65,13 @@ const PersonalProjects = () => {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative overflow-hidden rounded-3xl frosted-glass frosted-glass-hover block ${project.size}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className={`group relative overflow-hidden rounded-[40px] frosted-glass floating-card interactive-glow block ${project.size}`}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="aspect-video overflow-hidden relative rounded-t-3xl">
+              <div className="aspect-video overflow-hidden relative rounded-t-[40px]">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -92,10 +79,14 @@ const PersonalProjects = () => {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#FF1493] transition-colors" style={{ letterSpacing: '-0.02em' }}>
+                <h3 className="text-xl font-bold text-[#1A1A2E] mb-3 group-hover:vibrant-text transition-all" style={{ 
+                  fontFamily: 'Poppins, Nunito, sans-serif',
+                  fontWeight: 800,
+                  letterSpacing: '-0.01em' 
+                }}>
                   {project.title}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed">{project.description}</p>
+                <p className="text-sm text-[#1A1A2E]/75 leading-relaxed">{project.description}</p>
               </div>
             </motion.a>
           ))}

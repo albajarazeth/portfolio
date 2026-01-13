@@ -53,47 +53,32 @@ const experiences = [
 
 const WorkExperience = () => {
   return (
-    <section id="experience" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
-      {/* Liquid auras */}
+    <section id="experience" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #F0F9FF 0%, #FEF3F2 50%, #F5F3FF 100%)' }}>
+      {/* Abstract Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-1/4 left-1/3 w-[900px] h-[900px] rounded-full opacity-25 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #BF00FF 0%, #FF1493 50%, transparent 70%)' }}
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute top-1/4 left-1/3 w-[600px] h-[600px] abstract-shape animate-abstract parallax-slow"
+          style={{ background: 'linear-gradient(135deg, #B794F6, #F472B6)' }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/3 w-[800px] h-[800px] rounded-full opacity-20 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #FF1493 0%, #FF8C69 50%, transparent 70%)' }}
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-            scale: [1, 0.9, 1],
-          }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute bottom-1/4 right-1/3 w-[550px] h-[550px] abstract-shape-2 animate-abstract-2 parallax-medium"
+          style={{ background: 'linear-gradient(135deg, #FB9A8B, #67E8F9)' }}
         />
+        <div className="abstract-wave bottom-0 rotate-180" />
       </div>
       
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
-          style={{ letterSpacing: '-0.02em' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ 
+            fontFamily: 'Poppins, Nunito, sans-serif',
+            fontWeight: 900,
+            letterSpacing: '-0.02em' 
+          }}
         >
           Work Experience
         </motion.h2>
@@ -101,29 +86,32 @@ const WorkExperience = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={`${exp.company}-${index}`}
-              className="floating-pane rounded-3xl p-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="frosted-glass rounded-[40px] p-10 floating-card interactive-glow"
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="mb-8">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>{exp.title}</h3>
-                <p className="text-lg text-[#FF1493] mb-3 font-semibold">{exp.company}</p>
-                <p className="text-sm text-white/50 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{exp.stack}</p>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#1A1A2E] mb-2" style={{ 
+                  fontFamily: 'Poppins, Nunito, sans-serif',
+                  fontWeight: 800,
+                  letterSpacing: '-0.01em' 
+                }}>{exp.title}</h3>
+                <p className="text-lg vibrant-text mb-3 font-semibold">{exp.company}</p>
+                <p className="text-sm text-[#1A1A2E]/65 uppercase tracking-wide font-medium" style={{ letterSpacing: '0.05em' }}>{exp.stack}</p>
               </div>
               <ul className="space-y-4">
                 {exp.bullets.map((bullet, bulletIndex) => (
                   <motion.li
                     key={bulletIndex}
-                    className="text-white/80 flex items-start gap-4 leading-relaxed"
+                    className="text-[#1A1A2E]/85 flex items-start gap-4 leading-relaxed"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + bulletIndex * 0.05 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + bulletIndex * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <span className="text-[#FF1493] mt-2 flex-shrink-0">—</span>
+                    <span className="text-[#B794F6] mt-2 flex-shrink-0 font-bold">—</span>
                     <span>{bullet}</span>
                   </motion.li>
                 ))}

@@ -78,30 +78,31 @@ const TechBadge = ({ item, index }: { item: string, index: number }) => {
 
   return (
     <motion.span
-      className="relative px-4 py-2 text-white/70 text-sm font-medium rounded-full overflow-hidden group"
+      className="relative px-4 py-2 text-sm font-bold rounded-full overflow-hidden group"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
       style={{
-        background: 'rgba(255, 255, 255, 0.05)',
-        border: `1px solid transparent`,
-        boxShadow: `inset 0 0 20px ${colors.glow}`,
+        background: 'rgba(255, 255, 255, 0.7)',
+        border: `1px solid rgba(183, 148, 246, 0.5)`,
+        boxShadow: `inset 0 0 20px ${colors.glow}, 0 4px 12px rgba(183, 148, 246, 0.3)`,
+        color: '#1A1A2E',
       }}
     >
       <span 
-        className="absolute inset-0 rounded-full opacity-30"
+        className="absolute inset-0 rounded-full opacity-70"
         style={{
           background: colors.gradient,
-          filter: 'blur(1px)',
+          filter: 'blur(3px)',
           zIndex: -1,
         }}
       />
       <span className="relative z-10 flex items-center gap-2">
         {Icon && (
-          <Icon className="text-base" />
+          <Icon className="text-base" style={{ color: '#1A1A2E' }} />
         )}
-        <span>{item}</span>
+        <span style={{ color: '#1A1A2E', fontWeight: 700 }}>{item}</span>
       </span>
     </motion.span>
   );
@@ -109,45 +110,19 @@ const TechBadge = ({ item, index }: { item: string, index: number }) => {
 
 const OtherTechnologies = () => {
   return (
-    <section id="other-tech" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
-      {/* Background liquid auras */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/3 right-1/4 w-[800px] h-[800px] rounded-full opacity-20 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #FF1493 0%, transparent 70%)' }}
-          animate={{
-            x: [0, 60, 0],
-            y: [0, -60, 0],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 left-1/4 w-[700px] h-[700px] rounded-full opacity-18 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #BF00FF 0%, transparent 70%)' }}
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-      
+    <section id="other-tech" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #ECFDF5 0%, #F0F9FF 50%, #F5F3FF 100%)' }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
-          style={{ letterSpacing: '-0.02em' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ 
+            fontFamily: 'Poppins, Nunito, sans-serif',
+            fontWeight: 900,
+            letterSpacing: '-0.02em' 
+          }}
         >
           Other Technologies
         </motion.h2>
@@ -155,13 +130,17 @@ const OtherTechnologies = () => {
           {techCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className={`frosted-glass rounded-3xl p-8 frosted-glass-hover ${category.size}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className={`frosted-glass rounded-[40px] p-8 floating-card ${category.size}`}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <h3 className="text-lg font-bold text-white mb-6 uppercase tracking-wide text-sm" style={{ letterSpacing: '0.05em' }}>
+              <h3 className="text-lg font-bold text-[#1A1A2E] mb-6 uppercase tracking-wide text-sm" style={{ 
+                fontFamily: 'Poppins, Nunito, sans-serif',
+                fontWeight: 800,
+                letterSpacing: '0.05em' 
+              }}>
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-3">

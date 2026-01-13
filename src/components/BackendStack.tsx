@@ -16,12 +16,14 @@ const TechIcon = ({ tech, index }: { tech: typeof backendTech[0], index: number 
   return (
     <motion.div
       className="flex flex-col items-center justify-center cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ y: -4, scale: 1.05 }}
+      style={{ transition: 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)' }}
     >
       <motion.div
         className="mb-4"
@@ -35,7 +37,7 @@ const TechIcon = ({ tech, index }: { tech: typeof backendTech[0], index: number 
           style={{ color: tech.color }}
         />
       </motion.div>
-      <div className="text-sm text-white/60 font-semibold tracking-wide uppercase mt-2" style={{ letterSpacing: '0.05em' }}>
+      <div className="text-sm font-semibold tracking-wide uppercase mt-2" style={{ letterSpacing: '0.05em', color: '#B794F6' }}>
         {tech.name}
       </div>
     </motion.div>
@@ -44,32 +46,19 @@ const TechIcon = ({ tech, index }: { tech: typeof backendTech[0], index: number 
 
 const BackendStack = () => {
   return (
-    <section id="backend" className="py-[120px] px-6 sm:px-8 lg:px-12 bg-[#0D0D0D] relative overflow-hidden">
-      {/* Background liquid auras */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute bottom-1/3 left-1/4 w-[700px] h-[700px] rounded-full opacity-20 blur-[140px]"
-          style={{ background: 'radial-gradient(circle, #BF00FF 0%, transparent 70%)' }}
-          animate={{
-            x: [0, -50, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-      
+    <section id="backend" className="py-[120px] px-6 sm:px-8 lg:px-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #ECFDF5 0%, #F0F9FF 50%, #F5F3FF 100%)' }}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-20 text-center"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-20 text-center vibrant-text"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8 }}
-          style={{ letterSpacing: '-0.02em' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ 
+            fontFamily: 'Poppins, Nunito, sans-serif',
+            fontWeight: 900,
+            letterSpacing: '-0.02em' 
+          }}
         >
           Backend Stack
         </motion.h2>
