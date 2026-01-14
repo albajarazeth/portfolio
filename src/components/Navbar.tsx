@@ -55,13 +55,16 @@ const Navbar = () => {
     const targetElement = document.getElementById(targetId);
     
     if (targetElement) {
-      const navbarHeight = 80; // Account for fixed navbar
-      const targetPosition = targetElement.offsetTop - navbarHeight;
-      
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
+      // Small delay to let menu close animation start
+      setTimeout(() => {
+        const navbarHeight = 80; // Account for fixed navbar
+        const targetPosition = targetElement.offsetTop - navbarHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
     }
   };
 
